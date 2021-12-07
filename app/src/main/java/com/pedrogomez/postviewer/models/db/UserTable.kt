@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "hit_table")
+@Entity(tableName = "user_table")
 data class UserTable(
         @PrimaryKey
         @NonNull

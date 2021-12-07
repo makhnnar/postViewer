@@ -2,8 +2,8 @@ package com.pedrogomez.postviewer.di
 
 import androidx.room.Room
 import com.pedrogomez.postviewer.repository.UsersProvider
-import com.pedrogomez.postviewer.repository.local.UsersDataBase
-import com.pedrogomez.postviewer.repository.local.HitsLocalRepo
+import com.pedrogomez.postviewer.repository.local.users.UsersDataBase
+import com.pedrogomez.postviewer.repository.local.users.UsersLocalRepo
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -20,7 +20,7 @@ val dbModule = module {
 
 val dbProvider = module{
     single<UsersProvider.LocalDataSource>{
-        HitsLocalRepo(
+        UsersLocalRepo(
                 get<UsersDataBase>().hits()
         )
     }

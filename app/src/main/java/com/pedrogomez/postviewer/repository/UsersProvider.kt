@@ -58,8 +58,6 @@ class UsersProvider(
 
     interface RemoteDataSource{
         suspend fun getUsersRemoteData(): List<UserDataResponse>?
-        suspend fun getAllPost(): List<PostResponse>?
-        suspend fun getPostByUser(id:Int): List<PostResponse>?
     }
 
 }

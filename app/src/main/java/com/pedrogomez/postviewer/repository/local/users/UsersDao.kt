@@ -1,4 +1,4 @@
-package com.pedrogomez.postviewer.repository.local
+package com.pedrogomez.postviewer.repository.local.users
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

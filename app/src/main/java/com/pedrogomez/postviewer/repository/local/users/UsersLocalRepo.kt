@@ -1,4 +1,4 @@
-package com.pedrogomez.postviewer.repository.local
+package com.pedrogomez.postviewer.repository.local.users
 
 import androidx.lifecycle.LiveData
 import com.pedrogomez.postviewer.models.db.UserTable
@@ -8,7 +8,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class HitsLocalRepo(
+class UsersLocalRepo(
     private val usersDao: UsersDao,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : UsersProvider.LocalDataSource {
@@ -24,15 +24,17 @@ class HitsLocalRepo(
     }
 
     override suspend fun delete(userTable: UserTable) = withContext(ioDispatcher) {
-        userTable.isDeleted = true
         val result = usersDao.delete(
                 userTable
         )
-        "delete: ${userTable.objectID} => $result".print()
     }
 
     override fun observeUsers(): LiveData<List<UserTable>> {
         return usersDao.observeHits()
+    }
+
+    override fun getUsersByName(name: String): LiveData<List<UserTable>> {
+        TODO("Not yet implemented")
     }
 
     override suspend fun updateLocal(toInsert: List<UserTable>) {
