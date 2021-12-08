@@ -3,8 +3,14 @@ package com.pedrogomez.postviewer.repository.local.posts
 import androidx.lifecycle.LiveData
 import com.pedrogomez.postviewer.models.db.PostTable
 import com.pedrogomez.postviewer.repository.PostsProvider
+import com.pedrogomez.postviewer.repository.local.users.UsersDao
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 
-class PostsLocalRepo : PostsProvider.LocalDataSource {
+class PostsLocalRepo(
+    private val postsDao: PostsDao,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+) : PostsProvider.LocalDataSource {
 
     override fun observeUsers(): LiveData<List<PostTable>> {
 

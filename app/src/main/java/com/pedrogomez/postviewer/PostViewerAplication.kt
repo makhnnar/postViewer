@@ -1,9 +1,7 @@
 package com.pedrogomez.postviewer
 
 import android.app.Application
-import com.pedrogomez.postviewer.di.dbModule
-import com.pedrogomez.postviewer.di.dbProvider
-import com.pedrogomez.postviewer.di.networkModule
+import com.pedrogomez.postviewer.di.*
 import com.pedrogomez.postviewer.view.di.productsRepository
 import com.pedrogomez.postviewer.view.di.viewModelListModule
 import org.koin.android.ext.koin.androidContext
@@ -21,11 +19,13 @@ class PostViewerAplication : Application() {
             androidLogger()
             modules(
                 listOf(
+                    urlApi,
                     networkModule,
                     productsRepository,
                     viewModelListModule,
                     dbModule,
-                    dbProvider
+                    dbUsersProvider,
+                    dbPostsProvider
                 )
             )
         }

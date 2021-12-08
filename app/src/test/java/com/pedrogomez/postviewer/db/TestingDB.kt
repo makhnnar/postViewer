@@ -5,7 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.pedrogomez.postviewer.repository.local.users.UsersDao
-import com.pedrogomez.postviewer.repository.local.users.UsersDataBase
+import com.pedrogomez.postviewer.repository.local.MyDataBase
 import com.pedrogomez.postviewer.util.DataHelper
 import io.ktor.utils.io.errors.*
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +24,7 @@ import org.junit.runner.RunWith
 class TestingDB {
 
     private lateinit var usersDao: UsersDao
-    private lateinit var db: UsersDataBase
+    private lateinit var db: MyDataBase
 
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
@@ -34,9 +34,9 @@ class TestingDB {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(
             context,
-            UsersDataBase::class.java
+            MyDataBase::class.java
         ).build()
-        usersDao = db.hits()
+        usersDao = db.users()
     }
 
     @After
